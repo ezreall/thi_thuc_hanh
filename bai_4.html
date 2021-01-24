@@ -7,22 +7,24 @@
 <body>
 <canvas id="myCanvas" width="400px" height="400px" style="border: solid 1px"></canvas>
 <script>
-    class Circle {
-        constructor(x, y, r) {
+    class Circle{
+        constructor(x,y,radius,color) {
             this.x = x;
             this.y = y;
-            this.radius = r;
+            this.radius = radius;
+            this.color = color;
+        }
+        render(){
+            let canvas=document.getElementById('canvas');
+            let ctx = canvas.getContext('2d');
+            ctx.beginPath();
+            ctx.strokeStyle= this.color
+            ctx.arc(this.x,this.y,this.radius,0,2*Math.PI)
+            ctx.fill();
         }
     }
-    function greatCrile() {
-        let ctx = document.getElementById("myCanvas").getContext('2d');
-        let circle = new Circle(10, 10, 100);
-        ctx.arc(circle.x, circle.y, circle.radius, 0, Math.PI * 2);
-        ctx.fill()
-        ctx.fillStyle = '#000000';
-    }
-
-    greatCrile();
+    let circle1= new Circle(10,10,100,"#000000");
+    circle1.render()
 </script>
 </body>
 </html>
